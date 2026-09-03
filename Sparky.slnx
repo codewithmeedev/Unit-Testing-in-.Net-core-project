@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Sparky.Tests/Sparky.Tests.csproj" />
+  <Project Path="Sparky/Sparky.csproj" />
+  <Project Path="SparkyNUnitTests/SparkyNUnitTests.csproj" />
+</Solution>
