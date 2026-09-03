@@ -8,6 +8,10 @@ public class Customer
     public string GreetMessage { get; set; }
     public string GreetAndCombineNames(string firstName, string lastName)
     {
+        if(string.IsNullOrWhiteSpace(firstName))
+        {
+            throw new ArgumentException("Empty First Name");
+        }
         GreetMessage = $"Hii, {firstName} {lastName}";
         Discount = 20;
         return GreetMessage;

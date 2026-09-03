@@ -37,4 +37,30 @@ public class CustomersNUnitTests
         int result = customer.Discount;
         Assert.That(result, Is.InRange(10,25));
     }
+
+    [Test]
+    public void GreetMessage_GreetedWithoutLastName_ReturnsNotNull()
+    {
+        customer.GreetAndCombineNames("Dev","");
+        Assert.IsNotNull(customer.GreetMessage);
+        Assert.IsFalse(string.IsNullOrEmpty(customer.GreetMessage));
+    }
+
+    [Test]
+    public void GreetMessage_EmptyFirstName_ThrowsException()
+    {
+        //Exception With Error Message
+        var exceptionDetails = Assert.Throws<ArgumentException>(() => customer.GreetAndCombineNames("","Solanki"));
+        Assert.AreEqual("Empty First Name", exceptionDetails.Message);
+
+        Assert.That(() => customer.GreetAndCombineNames("","Solanki"),
+            Throws.ArgumentException.With.Message.EqualTo("Empty First Name"));
+
+        //Exception With Error Message
+        Assert.Throws<ArgumentException>(() => customer.GreetAndCombineNames("","Solanki"));
+
+        Assert.That(() => customer.GreetAndCombineNames("","Solanki"),
+            Throws.ArgumentException);
+
+    }
 }
