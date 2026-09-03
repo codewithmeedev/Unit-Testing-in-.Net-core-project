@@ -6,6 +6,13 @@ namespace Sparky;
 [TestFixture]
 public class CalculatorNUnitTests
 {
+    private Calculator calculator;
+
+    [SetUp]
+    public void SetUp()
+    {
+        calculator = new Calculator();
+    }
     [Test]
     public void AddNumbers_InputTwoIntgers_ReturnSum()
     {
@@ -45,5 +52,25 @@ public class CalculatorNUnitTests
         Calculator calc = new();
 
         return calc.IsOddNumber(a);
+    }
+
+    [Test]
+    public void GetEvenRange_InputMinAndMaxRange_ReturnEvenNumberRange()
+    {
+        //Calculator calc = new();
+
+        List<int> expectedRange = new() {4,6,8};
+
+        List<int> result = calculator.GetEvenRange(4,8);
+
+        Assert.That(result, Is.EquivalentTo(expectedRange));
+        Assert.That(result, Does.Contain(6));
+        Assert.That(result, Is.Ordered);
+        Assert.That(result, Is.Unique);
+        Assert.That(result, Is.Not.Empty);
+        Assert.AreEqual(expectedRange, result);
+        Assert.Contains(6, result);
+        Assert.That(result.Count, Is.EqualTo(3));
+        Assert.That(result, Has.No.Member(5));
     }
 }
