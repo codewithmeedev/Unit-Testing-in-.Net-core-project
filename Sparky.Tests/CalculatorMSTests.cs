@@ -5,15 +5,21 @@ namespace Sparky;
 [TestClass]
 public class CalculatorMSTests
 {
+    private Calculator calculator;
+    [TestInitialize]
+    public void SetUp()
+    {
+        calculator = new Calculator();
+    }
     [TestMethod]
     public void AddNumbers_InputTwoIntgers_ReturnSum()
     {
         //Arrange
-        Calculator calc = new();
+        //Calculator calc = new();
         int expected = 60;
 
         //Act
-        int result = calc.AddNumbers(20,40);
+        int result = calculator.AddNumbers(20,40);
 
         //Assert
         Assert.AreEqual(expected,result);
@@ -24,7 +30,7 @@ public class CalculatorMSTests
     {
         //Arrange
 
-        Calculator calculator = new();
+        //Calculator calculator = new();
 
         bool expected = true;
         //Act
@@ -32,5 +38,16 @@ public class CalculatorMSTests
         bool result = calculator.IsOddNumber(5);
         //Assert
         Assert.AreEqual(expected, result);
+    }
+
+    [TestMethod]
+     public void GetEvenRange_InputMinAndMaxRange_ReturnEvenNumberRange()
+    {
+        //Calculator calculator = new();
+
+        List<int> expectedRange = new() {2,4,6,8};    
+
+        List<int>  result = calculator.GetEvenRange(2,8);       
+        CollectionAssert.AreEquivalent(expectedRange,result);
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using NUnit.Framework;
 namespace Sparky;
+
 [TestFixture]
 public class CustomersNUnitTests
 {
@@ -28,5 +29,12 @@ public class CustomersNUnitTests
         //customer.GreetAndCombineNames("Dev", "Solanki");
 
         Assert.That(customer.GreetMessage, Is.Null);
+    }
+
+    [Test]
+    public void DiscountCheck_DefaultCustomer_ReturnsDiscountInRange()
+    {
+        int result = customer.Discount;
+        Assert.That(result, Is.InRange(10,25));
     }
 }

@@ -62,15 +62,17 @@ public class CalculatorNUnitTests
         List<int> expectedRange = new() {4,6,8};
 
         List<int> result = calculator.GetEvenRange(4,8);
-
-        Assert.That(result, Is.EquivalentTo(expectedRange));
-        Assert.That(result, Does.Contain(6));
-        Assert.That(result, Is.Ordered);
-        Assert.That(result, Is.Unique);
-        Assert.That(result, Is.Not.Empty);
-        Assert.AreEqual(expectedRange, result);
-        Assert.Contains(6, result);
-        Assert.That(result.Count, Is.EqualTo(3));
-        Assert.That(result, Has.No.Member(5));
+        Assert.Multiple(() =>
+        {
+            Assert.That(result, Is.EquivalentTo(expectedRange));
+            Assert.That(result, Does.Contain(6));
+            Assert.That(result, Is.Ordered);
+            Assert.That(result, Is.Unique);
+            Assert.That(result, Is.Not.Empty);
+            Assert.AreEqual(expectedRange, result);
+            Assert.Contains(6, result);
+            Assert.That(result.Count, Is.EqualTo(3));
+            Assert.That(result, Has.No.Member(5));
+        });
     }
 }
