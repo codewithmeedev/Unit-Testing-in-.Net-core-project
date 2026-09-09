@@ -61,6 +61,21 @@ public class CustomersNUnitTests
 
         Assert.That(() => customer.GreetAndCombineNames("","Solanki"),
             Throws.ArgumentException);
+    }
 
+    [Test]
+    public void CustomerType_CreateCustomerWithLessThan100OrderTotal_ReturnsBasicCustomer()
+    {
+        customer.OrderTotal = 50;
+        var result = customer.GetCustomerDetails();
+        Assert.That(result, Is.TypeOf<BasicCustomer>());
+    }
+
+    [Test]
+    public void CustomerType_CreateCustomerWithMoreThan100OrderTotal_ReturnsPlatinumCustomer()
+    {
+        customer.OrderTotal = 150;
+        var result = customer.GetCustomerDetails();
+        Assert.That(result, Is.TypeOf<PlatinumCustomer>());
     }
 }
