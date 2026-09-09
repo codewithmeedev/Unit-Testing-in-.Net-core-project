@@ -14,4 +14,12 @@ namespace Sparky
             Console.WriteLine($"LogBook Message: {message}");
         }
     }
+
+    public class LogBookFake : ILogBook
+    {
+        public void Message(string message)
+        {
+            //Do Nothing
+        }
+    }
 }

@@ -9,7 +9,7 @@ public class BankAccountNUnitTests
     [SetUp]
     public void SetUp()
     {
-        bankAccount = new(new LogBook());
+        bankAccount = new(new LogBookFake());
     }
 
     [Test]
